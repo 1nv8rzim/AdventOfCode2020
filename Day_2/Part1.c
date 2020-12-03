@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int count(char str[32], char letter);
+
 int main()
 {
 
@@ -10,7 +12,7 @@ int main()
     //read file into array
     char range[1000][6];
     char letter[1000][4];
-    char password[1000][16];
+    char password[1000][32];
     int i;
 
     if (file == NULL)
@@ -68,5 +70,30 @@ int main()
         nums[i][0] = atoi(low[i]);
         nums[i][1] = atoi(high[i]);
     }
-    printf("%d %d\n", nums[0][0], nums[0][1]);
+    int num = 0;
+
+    for (i = 0; i < 1000; i++)
+    {
+        if (nums[i][0] <= count(password[i], letter[i][0]) && count(password[i], letter[i][0]) <= nums[i][1])
+        {
+            num++;
+        }
+    }
+
+    printf("%d\n", num);
+}
+
+int count(char str[32], char letter)
+{
+    int num = 0;
+
+    for (int i = 0; i < 32; i++)
+    {
+        if (str[i] == letter)
+        {
+            num++;
+        }
+    }
+
+    return num;
 }
