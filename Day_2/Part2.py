@@ -1,4 +1,4 @@
-with open('../Day_2/input.txt', 'r') as file:
+with open('Day_2/input.txt', 'r') as file:
     data = [line.strip().split() for line in file]
 
 for i, element in enumerate(data):
