@@ -4,7 +4,7 @@ with open('Day_4/input.txt', 'r') as file:
     data = file.readlines()
 
 passports = ['']
-needed = {'byr':range(1920,2003), 'iyr':range(2010,2021), 'eyr':range(2020,2031), 'hgt':{'in':range(59,77),'cm':range(150,194)}, 'hcl':re.compile('^#(0-9a-f){6}$'), 'ecl':('amb', 'blu', 'gry', 'grn', 'hzl', 'oth'),'pid':re.compile('^(0-9){9}$')}
+needed = {'byr':range(1920,2003), 'iyr':range(2010,2021), 'eyr':range(2020,2031), 'hgt':{'in':range(59,77),'cm':range(150,194)}, 'hcl':re.compile('^#[0-9a-f]{6}$'), 'ecl':('amb', 'blu', 'gry', 'grn', 'hzl', 'oth'),'pid':re.compile('^[0-9]{9}$')}
 counter = 0
 
 for line in data:
