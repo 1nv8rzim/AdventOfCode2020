@@ -6,6 +6,7 @@ def test(data):
     _list = []
     accumulator = 0
     i = 0
+
     while i < len(data):
         line = data[i]
         if i in _list:
@@ -16,9 +17,9 @@ def test(data):
         line = line.split()
 
         if line[0] == 'acc':
-            accumulator += int(line[1])
+            accumulator += int(line[-1])
         elif line[0] == 'jmp':
-            i = i + int(line[1])
+            i = i + int(line[-1])
             continue
 
         i += 1
@@ -29,9 +30,9 @@ def change(data, i):
     line = data[i].split()
 
     if line[0] == 'jmp':
-        data[i] = 'nop ' + data[1]
+        data[i] = 'nop ' + line[-1]
     elif line[0] == 'nop':
-        data[i] = 'jmp ' + data[1]
+        data[i] = 'jmp ' + line[-1]
     else:
         return None
     return data
@@ -40,10 +41,10 @@ def change(data, i):
 _list = test(data)[0]
 
 for i in _list:
-    if _data:
-        = change(data, i) is None:
+    _data = change(data, i)
+    if _data is None:
         continue
-    if (temp: = test(_data))[0][2] == len(data) - 1:
+    temp = test(_data)
+    if temp[2] == len(data) - 1:
+        print(temp[1])
         break
-
-print(temp[1])
