@@ -1,5 +1,5 @@
 with open('Day_8/input.txt', 'r') as file:
-    data = file.readlines()
+    x = file.readlines()
 
 
 def test(data):
@@ -27,24 +27,24 @@ def test(data):
 
 
 def change(data, i):
-    line = data[i].split()
-
-    if line[0] == 'jmp':
-        data[i] = 'nop ' + line[-1]
-    elif line[0] == 'nop':
-        data[i] = 'jmp ' + line[-1]
+    _data = data[:]
+    line = _data[i].strip().split()
+    if _data[i][:3] == 'jmp':
+        _data[i] = 'nop' + _data[i][3:]
+    elif _data[i][:3] == 'nop':
+        _data[i] = 'jmp' + _data[i][3:]
     else:
         return None
-    return data
+    return _data
 
 
-_list = test(data)[0]
+_list = test(x)[0]
 
 for i in _list:
-    _data = change(data, i)
+    _data = change(x, i)
     if _data is None:
         continue
     temp = test(_data)
-    if temp[2] == len(data) - 1:
+    if temp[2] == len(x):
         print(temp[1])
         break

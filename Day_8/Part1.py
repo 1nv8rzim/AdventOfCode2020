@@ -8,7 +8,7 @@ i = 0
 while i < len(data):
     line = data[i]
     if i in _set:
-        print(accumulator)
+        print('Failed')
         break
     else:
         _set.add(i)
@@ -22,3 +22,5 @@ while i < len(data):
         continue
 
     i += 1
+
+print(accumulator)
