@@ -1,4 +1,4 @@
-with open('Day_10/input.txt', 'temp') as file:
+with open('Day_10/input.txt', 'r') as file:
     data = file.readlines()
 
 for index, num in enumerate(data):
