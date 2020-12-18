@@ -7,9 +7,6 @@ class temp:
         self.value = value
 
     def __add__(self, other):
-        return temp(self.value + other.value)
-
-    def __sub__(self, other):
         return temp(self.value * other.value)
 
     def __mul__(self, other):
@@ -19,7 +16,7 @@ class temp:
 _sum = 0
 for line in data:
     for i in range(10):
-        line = line.replace(f"{i}", f"temp({i})")
-    line = line.replace("*", "-").replace("+", "*")
+        line = line.replace(f'{i}', f'temp({i})')
+    line = line.replace('*', '_').replace('+', '*').replace('_', '+')
     _sum += eval(line, {"temp": temp}).value
 print(_sum)
